@@ -1,0 +1,330 @@
+/* pixel.css — Pixel art base styles and keyframe animations
+ * Imported by: src/app/globals.css
+ */
+
+/* ============================================================
+   PIXEL FONT UTILITY
+   ============================================================ */
+
+.font-pixel {
+  /* font-family only — size/line-height set per-element via Tailwind text-[] utilities */
+  font-family: var(--font-press-start), "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   WATER & OCEAN ANIMATIONS
+   ============================================================ */
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes bobber-idle {
+  0%, 100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+  33% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  66% {
+    transform: translateY(3px) rotate(2deg);
+  }
+}
+
+@keyframes bobber-bite {
+  0%   { transform: translateY(0px) scale(1); }
+  15%  { transform: translateY(10px) scale(0.95); }
+  30%  { transform: translateY(-3px) scale(1.05); }
+  50%  { transform: translateY(14px) scale(0.9); }
+  70%  { transform: translateY(-2px) scale(1.02); }
+  85%  { transform: translateY(11px) scale(0.93); }
+  100% { transform: translateY(12px) scale(0.92); }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-slow {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+@keyframes cast-arc {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  40% {
+    /* Peak of arc — bobs up-left as it flies out */
+    transform: translate(-50px, -65px) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    /* Lands in water to the left of the rod */
+    transform: translate(-90px, 10px) scale(0.95);
+    opacity: 1;
+  }
+}
+
+@keyframes reel-in {
+  0% {
+    /* Start from resting-in-water position */
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    /* Pull up and toward the rod tip */
+    transform: translate(60px, -130px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes splash {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-20px) scale(0.3); opacity: 0; }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+/* ============================================================
+   FISH REVEAL ANIMATIONS
+   ============================================================ */
+
+@keyframes card-reveal {
+  0% {
+    transform: translateY(50px) scale(0.82);
+    opacity: 0;
+  }
+  65% {
+    transform: translateY(-6px) scale(1.03);
+    opacity: 1;
+  }
+  82% {
+    transform: translateY(2px) scale(0.99);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rarity-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px currentColor;
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 18px currentColor, 0 0 36px currentColor;
+    opacity: 1;
+  }
+}
+
+@keyframes legendary-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(234,179,8,0.4), 0 0 30px rgba(234,179,8,0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(234,179,8,0.7), 0 0 60px rgba(234,179,8,0.4), 0 0 100px rgba(234,179,8,0.15);
+  }
+}
+
+@keyframes mythic-border {
+  0%   { border-color: #a855f7; }
+  25%  { border-color: #ec4899; }
+  50%  { border-color: #06b6d4; }
+  75%  { border-color: #a855f7; }
+  100% { border-color: #ec4899; }
+}
+
+@keyframes mythic-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes sparkle-float {
+  0%   { transform: translateY(0) scale(0);   opacity: 0; }
+  20%  { transform: translateY(-4px) scale(1.2); opacity: 1; }
+  80%  { transform: translateY(-16px) scale(0.8); opacity: 0.7; }
+  100% { transform: translateY(-22px) scale(0); opacity: 0; }
+}
+
+/* ============================================================
+   CURSOR BLINK (for streaming indicator)
+   ============================================================ */
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+/* ============================================================
+   SCORE BAR
+   ============================================================ */
+
+@keyframes bar-fill {
+  from { width: 0%; }
+  to   { width: var(--bar-fill); }
+}
+
+.score-bar-fill {
+  animation: bar-fill 0.6s ease-out forwards;
+}
+
+/* ============================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================ */
+
+.animate-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+.animate-bobber-idle {
+  animation: bobber-idle 2.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-bobber-bite {
+  animation: bobber-bite 0.7s ease-in-out forwards;
+  will-change: transform;
+}
+
+.animate-ripple {
+  animation: ripple 1.8s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-ripple-slow {
+  animation: ripple-slow 2.4s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-cast {
+  animation: cast-arc 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-reel {
+  animation: reel-in 0.55s ease-in forwards;
+  will-change: transform, opacity;
+}
+
+.animate-card-reveal {
+  animation: card-reveal 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-glow-pulse {
+  animation: rarity-glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-legendary-glow {
+  animation: legendary-glow 2.5s ease-in-out infinite;
+}
+
+.animate-mythic-border {
+  animation: mythic-border 2s linear infinite;
+}
+
+.animate-mythic-shimmer {
+  background-size: 200% 200%;
+  animation: mythic-shimmer 3s ease infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle-float 1.8s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 2s ease-in-out infinite;
+}
+
+.animate-splash {
+  animation: splash 0.6s ease-out forwards;
+}
+
+/* ============================================================
+   PIXEL-STYLE UI ELEMENTS
+   ============================================================ */
+
+/* Retro scanline overlay effect */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   WATER SCENE LAYERS
+   ============================================================ */
+
+.water-surface {
+  background: linear-gradient(
+    180deg,
+    #020c14 0%,
+    #041424 20%,
+    #071e33 50%,
+    #0a2a47 75%,
+    #0e3a61 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.water-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(14, 58, 97, 0.3) 30%,
+    rgba(26, 82, 118, 0.5) 50%,
+    rgba(14, 58, 97, 0.3) 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: mythic-shimmer 5s ease-in-out infinite;
+}
