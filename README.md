@@ -24,7 +24,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 ## Tech Stack
 
-- Next.js 14+ (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS
 - Claude Haiku 4.5 API

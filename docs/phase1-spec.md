@@ -12,7 +12,7 @@ This is the implementation spec for the Phase 1 Proof of Concept. It is designed
 
 | Layer | Choice | Reason |
 |-------|--------|--------|
-| Framework | **Next.js 14+ (App Router)** | Fast setup, API routes built in, deploys to Vercel trivially |
+| Framework | **Next.js 15 (App Router)** | Fast setup, API routes built in, deploys to Vercel trivially |
 | Styling | **Tailwind CSS** | Rapid UI development, easy pixel-art aesthetic |
 | API | **Anthropic Claude Haiku 4.5** | Cheapest Claude model, fast, good enough for scoring |
 | Hosting | **Vercel** (or local dev only for PoC) | Zero-config deployment for Next.js |
@@ -619,9 +619,9 @@ ANTHROPIC_API_KEY=sk-ant-...
 // package.json dependencies (key ones)
 {
   "dependencies": {
-    "next": "^14.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "next": "^15.5.14",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "@anthropic-ai/sdk": "^0.30.0",
     "tailwindcss": "^3.4.0"
   }
@@ -635,7 +635,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 When handing this to Claude Code, use this task sequence:
 
 ### Task 1: Scaffold
-"Create a new Next.js 14 project with App Router, TypeScript, and Tailwind CSS. Set up the project structure as defined in the Phase 1 tech spec. Install the Anthropic SDK. Add the Press Start 2P pixel font from Google Fonts."
+"Create a new Next.js 15 project with App Router, TypeScript, and Tailwind CSS. Set up the project structure as defined in the Phase 1 tech spec. Install the Anthropic SDK. Add the Press Start 2P pixel font from Google Fonts."
 
 ### Task 2: Types & Data
 "Create the TypeScript types, rarity color config, and scoring prompt as defined in the spec. Create the fish database with all 73 species from the scoring system v3 document, following the exact structure shown. Create the trash items array."

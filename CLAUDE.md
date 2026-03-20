@@ -12,7 +12,7 @@ Browser-only, no auth, no database, no backend persistence. Validate that the co
 
 ## Tech Stack
 
-- Next.js 14+ (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS
 - Anthropic Claude Haiku 4.5 API (`claude-haiku-4-5-20251001`)
@@ -91,7 +91,7 @@ ANTHROPIC_API_KEY=sk-ant-...   # Required. Claude Haiku API key.
 
 Follow this sequence — each step builds on the previous:
 
-1. **Scaffold** — Next.js 14 project with App Router, TypeScript, Tailwind CSS. Install `@anthropic-ai/sdk`. Add Press Start 2P from Google Fonts (via `next/font/google`).
+1. **Scaffold** — Next.js 15 project with App Router, TypeScript, Tailwind CSS. Install `@anthropic-ai/sdk`. Add Press Start 2P from Google Fonts (via `next/font/google`).
 2. **Types & Data** — Create `types.ts`, `rarityColors.ts`, `scoringPrompt.ts`, and the full `fishDatabase.ts` (all 73 species from `docs/scoring-prompt.md` + 5 trash items). Each fish needs: id, emoji, and 2-3 flavor texts matching the project's witty, concise tone.
 3. **API Routes** — `/api/chat` (streaming via Anthropic SDK) and `/api/score` (non-streaming, returns parsed JSON scores). Neither route logs prompts.
 4. **Fish Selection** — `fishSelection.ts` with clarity modification, habitat resolution (including special habitats), size class, rarity, and candidate filtering with fallback widening. Follow the algorithm in `docs/scoring-prompt.md` Part 8.
